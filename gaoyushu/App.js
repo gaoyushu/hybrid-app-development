@@ -21,7 +21,9 @@ const App = () => {
 
   let init = async () => {
     AsyncStorage.getItem('isInstall').then(res=>{
-      setIsInstall(false);
+      if(res){
+        setIsInstall(false);
+      }
     })
 		AsyncStorage.getItem('user')
 		.then(res=>{

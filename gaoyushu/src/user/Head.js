@@ -38,6 +38,8 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   head: {
+    width: '100%',
+    height: '100%',
     borderColor: '#fff',
     flex:1
   },
@@ -71,7 +73,7 @@ export default class Head extends Component {
   componentDidMount() {
     this.read((res)=>{
       this.setState({
-        imageUrl: JSON.parse(res),
+        imageUrl: JSON.parse(res)||require('../img/icon.jpg'),
       },()=>{
         // console.log('will', this.state.imageUrl)
       });
@@ -124,8 +126,8 @@ export default class Head extends Component {
           <View style={styles.imgdiv}>
             <Image
               style={styles.head}
-              source={this.state.imageUrl||require('../img/icon.jpg')}
-              resizeMode='cover'
+              source={this.state.imageUrl}
+              resizeMode='stretch'
             />
           </View>
         </TouchableWithoutFeedback>
